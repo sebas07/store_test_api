@@ -24,6 +24,7 @@ namespace Infraestructure.Data
         #endregion
 
         #region Properties
+        public DbSet<Brand> Brands { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<User> Users { get; set; }
         #endregion

@@ -1,8 +1,11 @@
 using API.Extensions;
 using Infraestructure.Data;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddAutoMapper(Assembly.GetEntryAssembly());
 
 // Add services to the container.
 builder.Services.ConfigureCors();
@@ -37,6 +40,7 @@ using (var scope = app.Services.CreateScope())
         var context = services.GetRequiredService<StoreContext>();
         await context.Database.MigrateAsync();
         await StoreContextSeed.SeedRolesAsync(context, loggerFactory);
+        await StoreContextSeed.SeedBrandsAsync(context, loggerFactory);
     }
     catch (Exception ex)
     {

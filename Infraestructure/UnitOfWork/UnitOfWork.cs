@@ -1,4 +1,5 @@
-﻿using Core.Interfaces;
+﻿using Core.Entities;
+using Core.Interfaces;
 using Infraestructure.Data;
 using Infraestructure.Repositories;
 using System;
@@ -15,10 +16,23 @@ namespace Infraestructure.UnitOfWork
         private readonly StoreContext _context;
         private IRoleRepository _roleRepository;
         private IUserRepository _userRepository;
+        private IBrandRepository _brandRepository;
 
         public UnitOfWork(StoreContext context)
         {
             this._context = context;
+        }
+
+        public IBrandRepository Brands
+        {
+            get
+            {
+                if (this._brandRepository == null)
+                {
+                    this._brandRepository = new BrandRepository(this._context);
+                }
+                return this._brandRepository;
+            }
         }
 
         public IRoleRepository Roles

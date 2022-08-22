@@ -3,6 +3,7 @@
     public interface IUnitOfWork
     {
 
+        IBrandRepository Brands { get; }
         IRoleRepository Roles { get; }
         IUserRepository Users { get; }
 
