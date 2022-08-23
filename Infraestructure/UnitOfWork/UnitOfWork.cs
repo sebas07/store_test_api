@@ -17,6 +17,7 @@ namespace Infraestructure.UnitOfWork
         private IRoleRepository _roleRepository;
         private IUserRepository _userRepository;
         private IBrandRepository _brandRepository;
+        private ICategoryRepository _categoryRepository;
 
         public UnitOfWork(StoreContext context)
         {
@@ -32,6 +33,16 @@ namespace Infraestructure.UnitOfWork
                     this._brandRepository = new BrandRepository(this._context);
                 }
                 return this._brandRepository;
+            }
+        }
+
+        public ICategoryRepository Categories
+        {
+            get
+            {
+                if (this._categoryRepository == null)
+                    this._categoryRepository = new CategoryRepository(this._context);
+                return this._categoryRepository;
             }
         }
 

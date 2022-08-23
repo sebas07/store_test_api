@@ -11,6 +11,9 @@ namespace API.Profiles
         {
             CreateMap<Brand, BrandDto>()
                 .ReverseMap();
+
+            CreateMap<Category, CategoryDto>()
+                .ReverseMap();
         }
 
     }

@@ -4,6 +4,7 @@
     {
 
         IBrandRepository Brands { get; }
+        ICategoryRepository Categories { get; }
         IRoleRepository Roles { get; }
         IUserRepository Users { get; }
 
